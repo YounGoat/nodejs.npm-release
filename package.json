@@ -1,0 +1,28 @@
+{
+    "name": "yuan-npm-release",
+    "version": null,
+    "description": "NPM package release tool",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "bin": {
+        "yuan-npm-release": "./index.js",
+        "upp": "./upp.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/YounGoat/nodejs.npm-release.git"
+    },
+    "author": "youngoat@163.com",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/YounGoat/nodejs.npm-release/issues"
+    },
+    "homepage": "https://github.com/YounGoat/nodejs.npm-release#readme",
+    "dependencies": {
+        "colors": "^1.1.2",
+        "minimist": "^1.2.0",
+        "semver": "^5.1.0"
+    }
+}
