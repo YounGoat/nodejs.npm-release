@@ -2,6 +2,8 @@
 
 Are you tired with commit, push and publish? When you wanna upgrade your NPM package, this tool will help you finishing all works necessary with only one command.
 
+![help](./doc/help.png)
+
 ```
 NAME
   yuan-npm-release - Change version, push to remote and publish to registry.
