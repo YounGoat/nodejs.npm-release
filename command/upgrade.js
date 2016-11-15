@@ -11,6 +11,10 @@ var MODULE_REQUIRE
 	, OPTIONS = require('../util/options')
 	;
 
+if (!OPTIONS.upgrade) {
+	OPTIONS.upgrade = 'patch';
+}
+
 // ---------------------------
 // 检查系统命令。
 var cmd, response;
