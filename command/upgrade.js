@@ -14,7 +14,6 @@ var MODULE_REQUIRE
 if (!OPTIONS.upgrade) {
 	OPTIONS.upgrade = 'patch';
 }
-console.log(OPTIONS);
 
 // ---------------------------
 // 检查系统命令。
