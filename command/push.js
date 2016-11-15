@@ -39,7 +39,7 @@ else {
 	process.exit(1);
 }
 
-response = runner('git push origin HEAD --follow-tags', OPTIONS.path);
+response = runner('git push origin HEAD --tags', OPTIONS.path);
 if (response.error) {
 	logger.error('Failed to push to remote repository.');
 	process.exit(1);
