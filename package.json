@@ -1,6 +1,6 @@
 {
     "name": "yuan-npm-release",
-    "version": "0.0.4",
+    "version": "0.0.5",
     "description": "NPM package release tool",
     "main": "index.js",
     "scripts": {
