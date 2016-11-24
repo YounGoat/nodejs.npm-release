@@ -45,12 +45,12 @@ if (fs.existsSync(pathname)) {
 	}
 }
 if (!found) {
-	text += [ '', '# Added by yuan-npm-release, ' + new Date, 'node_modules' ].join(os.EOL);
+	text += [ '', '# Added by yuan-npm-release, ' + new Date, 'node_modules' ].join('\n');
 	fs.writeFileSync(pathname, text);
 }
 logger.info('node_modules ignored.');
 
-runner('git add .gitignore && git add * -f && git commit -m "Auto committed by yuan-npm-release"', OPTIONS.path);
+runner('git add .gitignore && git add * && git commit -m "Auto committed by yuan-npm-release"', OPTIONS.path);
 logger.info('Committed to local repository.');
 
 var pathname = path.join(OPTIONS.path, 'package.json');

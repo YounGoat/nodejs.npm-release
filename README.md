@@ -1,3 +1,5 @@
+See [CHANGE LOG](./CHANGELOG.md) for notable changes.
+
 #	yuan-npm-release, UPP
 
 Are you tired with commit, push and publish? When you wanna upgrade your NPM package, this tool will help you finishing all works necessary with only one command.
