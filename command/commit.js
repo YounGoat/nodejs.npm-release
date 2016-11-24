@@ -50,7 +50,8 @@ if (!found) {
 }
 logger.info('node_modules ignored.');
 
-runner('git add .gitignore && git add * && git commit -m "Auto committed by yuan-npm-release"', OPTIONS.path);
+runner('git add .gitignore && git add *', OPTIONS.path); 
+runner('git commit -m "Auto committed by yuan-npm-release"', OPTIONS.path);
 logger.info('Committed to local repository.');
 
 var pathname = path.join(OPTIONS.path, 'package.json');
