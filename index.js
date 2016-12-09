@@ -8,8 +8,13 @@ var MODULE_REQUIRE
 var COMMAND_NAME = 'yuan-npm-release';
 
 var command, run = false;
-if (OPTIONS.h || OPTIONS.help) {
+if (OPTIONS.help) {
 	require('./command/help');
+	process.exit(0);
+}
+
+if (OPTIONS.version) {
+	require('./command/version');
 	process.exit(0);
 }
 
