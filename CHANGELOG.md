@@ -22,5 +22,11 @@ Since this version, this package will be simultaneously published by name *yupp*
 *	__New command *ypp*__  
 	Run push (to remote) and publish (to registry), without change version in package.json.
 
+##	[0.1.1] - 2016-12
+
+### Added
+
+*yupp.json*, if exists, will be validated before adopted.
+
 ---
 This CHANGELOG.md follows [*Keep a CHANGELOG*](http://keepachangelog.com/).

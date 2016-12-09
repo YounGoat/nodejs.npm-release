@@ -17,4 +17,6 @@ See [help.txt](./help.txt) if the previous image not downloaded.
 }
 ```
 
+*yupp.json* is not necessary, but it should conform to JSON schema [yupp.schema](./yupp.schema.json).
+
 If __alais__ set, *yuan-npm-release* will try to publish a renamed copy to NPM registry.

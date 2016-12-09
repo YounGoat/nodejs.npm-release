@@ -4,13 +4,13 @@
 var MODULE_REQUIRE
 	, OPTIONS = require('./util/options')
 	;
-
+s
 if (OPTIONS.help) {
 	require('./command/help');
 	process.exit(0);
 }
 
-if (OPTIONS.version) {
+if (OPTIONS.ver) {
 	require('./command/version');
 	process.exit(0);
 }

@@ -37,6 +37,7 @@ if (fs.existsSync(yuppPathname)) {
 	var validate = ajv.compile(schema);
 	if (!validate(json)) {
 		logger.error('*yupp.json* does not conform to yupp.schema.');
+		logger.info('For details see https://github.com/YounGoat/nodejs.npm-release#about-yuppjson')
 		process.exit(41);
 	}
 
@@ -47,7 +48,7 @@ else {
 	OPTIONS.config = {};
 }
 
-OPTIONS.version = OPTIONS.v || OPTIONS.version;
+OPTIONS.ver     = OPTIONS.v;
 OPTIONS.help    = OPTIONS.h || OPTIONS.help;
 
 OPTIONS.upgrade = OPTIONS.u || OPTIONS.upgrade;
