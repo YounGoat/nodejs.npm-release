@@ -2,6 +2,7 @@
 *NAME*
   _yuan-npm-release_ - Change version, push to remote and publish to registry.
   _yupp_ - Short name, means U(pgrade), P(ush) and P(ublish).
+  _ypp_ - Short name, means P(ush) and P(ublish).
 
 *SYNOPSIS*
   `yuan-npm-release -h` #|# `--help`
