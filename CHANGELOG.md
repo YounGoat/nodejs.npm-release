@@ -11,6 +11,8 @@ Fixed the bug that what ignored is still added and commited to the repository.
 
 ##	[0.1.0] - 2016-12
 
+Since this version, this package will be simultaneously published by name *yupp*.
+
 ###	Added
 
 *	__Dryrun mode supported__  

@@ -16,7 +16,7 @@ var MODULE_REQUIRE
 
 var pathname, pkgJson, rawName;
 
-var runPublish = function(name) {
+var changeName = function(name) {
 	if (pkgJson.name != name) {
 		pkgJson.name = name;
 		if (!OPTIONS.dryrun) {
@@ -25,9 +25,12 @@ var runPublish = function(name) {
 		else {
 			logger.info('#Action: # Changes on package.json saved.');
 		}
-		logger.info('Package name changed to *' + name + '*.');
+		logger.info('Package name changed/reset to *' + name + '*.');
 	}
+};
 
+var runPublish = function(name) {
+	changeName(name);
 	var response = runner('npm publish');
 	if (response.error) {
 		logger.error('Failed to publish to NPM registry.');
@@ -59,3 +62,8 @@ if (typeof alias == 'string') {
 alias.forEach(function(alias) {
 	runPublish(alias)
 });
+
+// ---------------------------
+// 恢复名称。
+
+changeName(rawName);
