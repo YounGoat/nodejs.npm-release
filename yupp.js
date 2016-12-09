@@ -5,11 +5,13 @@ var MODULE_REQUIRE
 	, OPTIONS = require('./util/options')
 	;
 
-var COMMAND_NAME = 'yuan-npm-release';
-
-var command;
-if (OPTIONS.h || OPTIONS.help) {
+if (OPTIONS.help) {
 	require('./command/help');
+	process.exit(0);
+}
+
+if (OPTIONS.version) {
+	require('./command/version');
 	process.exit(0);
 }
 

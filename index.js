@@ -5,9 +5,8 @@ var MODULE_REQUIRE
 	, OPTIONS = require('./util/options')
 	;
 
-var COMMAND_NAME = 'yuan-npm-release';
+var run = false;
 
-var command, run = false;
 if (OPTIONS.help) {
 	require('./command/help');
 	process.exit(0);
