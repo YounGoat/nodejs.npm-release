@@ -3,7 +3,18 @@ var MODULE_REQUIRE
 	, os = require('os')
 	;
 
-module.exports = function(cmd, cwd) {
+var OPTIONS = require('../util/options');
+var logger = require('../util/logger');
+
+module.exports = function(cmd, cwd, forceRun) {
+	if (!forceRun && OPTIONS.dryrun) {
+		logger.info('#Command:# `' + cmd + '`');
+		if (cwd) {
+			logger.info('#CWD: ' + cwd + '#');
+		}
+		return { lines: [], error: null };
+	}
+
 	var response = { error: null };
 	try {
 		var stdout = child_process.execSync(cmd, { cwd: cwd, stdio: [ null, null, null ] });

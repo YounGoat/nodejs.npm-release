@@ -12,7 +12,7 @@ var MODULE_REQUIRE
 var cmd, response;
 
 require('./commit');
-response = runner('git remote', OPTIONS.path);
+response = runner('git remote', OPTIONS.path, true);
 var lines = response.lines.filter(function(line) { return line != ''; });
 
 if (lines.length == 0) {

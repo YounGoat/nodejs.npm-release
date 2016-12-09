@@ -18,10 +18,18 @@ if (!fs.existsSync(OPTIONS.path)) {
 	process.exit(40);
 }
 
+if (fs.existsSync(path.join(OPTIONS.path, 'yupp.json'))) {
+	OPTIONS.config = require(path.join(OPTIONS.path, 'yupp.json'));
+}
+else {
+	OPTIONS.config = {};
+}
+
 OPTIONS.upgrade = OPTIONS.u || OPTIONS.upgrade;
-OPTIONS.push = OPTIONS.p || OPTIONS.push;
-OPTIONS.commit = OPTIONS.c || OPTIONS.commit;
+OPTIONS.push    = OPTIONS.p || OPTIONS.push;
+OPTIONS.commit  = OPTIONS.c || OPTIONS.commit;
 OPTIONS.publish = OPTIONS.P || OPTIONS.publish;
+OPTIONS.dryrun  = OPTIONS.d || OPTIONS.dryrun;
 
 if (OPTIONS.upgrade === true) {
 	OPTIONS.upgrade = 'patch';

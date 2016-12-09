@@ -28,8 +28,11 @@ if (!fs.existsSync(pathname)) {
 	process.exit(41);
 }
 
-// 加载 package.json 备用。
+// ---------------------------
+// 修改 package.json。
+
 var pkgJson = require(pathname);
+
 if (OPTIONS.version) {
 	pkgJson.version = OPTIONS.version;
 }
@@ -37,5 +40,10 @@ else {
 	pkgJson.version = semver.inc(pkgJson.version, OPTIONS.upgrade, OPTIONS.prereleaseName);
 }
 
-fs.writeFileSync(pathname, JSON.stringify(pkgJson, null, 4), 'utf8');
+if (!OPTIONS.dryrun) {
+	fs.writeFileSync(pathname, JSON.stringify(pkgJson, null, 4), 'utf8');
+}
+else {
+	logger.info('#Action: # Changes on package.json saved.');
+}
 logger.info('Package upgraded to *' + pkgJson.version + '*.');

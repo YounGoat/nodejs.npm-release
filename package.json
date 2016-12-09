@@ -1,6 +1,6 @@
 {
     "name": "yuan-npm-release",
-    "version": "0.0.5",
+    "version": "0.1.0",
     "description": "NPM package release tool",
     "main": "index.js",
     "scripts": {
@@ -8,7 +8,8 @@
     },
     "bin": {
         "yuan-npm-release": "./index.js",
-        "yupp": "./yupp.js"
+        "yupp": "./yupp.js",
+        "ypp": "./ypp.js"
     },
     "repository": {
         "type": "git",

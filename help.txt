@@ -9,20 +9,25 @@
 
   `yuan-npm-release -u` #|# `--upgrade` #[# `major` #|# `minor` #|# `patch` #|# prerelease-name #|# semantic-version #]#
   Upgrade the package version.
+  Without parameter, `patch` will be used by default.
 
   `yuan-npm-release -c` #|# `--commit`
   Commit to local Git repository.
 
   `yuan-npm-release -p` #|# `--push` #[# remote-name #]#
   Push to remote Git repository.
-  Before *push*, *commit* will be run firstly.
+  Before *push*, *commit* will be run. So `-cp` equals `-p`.
 
   `yuan-npm-release -P` #|# `--publish`
   Publish to NPM registry.
 
   `yupp`
   Equals to `yuan-npm-release --upgrade --push --publish`.
-  Options `--push` and `--publish` also supported if you wanna specify version and remote repository.
+  Options `--upgrade` and `--push` also supported if you wanna specify version and remote repository.
+
+  `ypp`
+  Equals to `yuan-npm-release --push --publish`.
+  The version in package.json will not be changed.
 
 *OTHER OPTIONS*
   `--path`

@@ -8,5 +8,17 @@ Notable changes to this project will be documented in this file. This project ad
 
 Fixed the bug that what ignored is still added and commited to the repository.
 
+
+##	[0.1.0] - 2016-12
+
+###	Added
+
+*	__Dryrun mode supported__  
+	With ```--dryrun``` or ```-d``` option added, the command will run in dry-run (testing) mode.  
+	What is *dry run* ? See [https://en.wikipedia.org/wiki/Dry_run_(testing)](https://en.wikipedia.org/wiki/Dry_run_(testing)) for more details.
+
+*	__New command *ypp*__  
+	Run push (to remote) and publish (to registry), without change version in package.json.
+
 ---
 This CHANGELOG.md follows [*Keep a CHANGELOG*](http://keepachangelog.com/).
