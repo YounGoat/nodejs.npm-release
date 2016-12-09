@@ -47,6 +47,9 @@ else {
 	OPTIONS.config = {};
 }
 
+OPTIONS.version = OPTIONS.v || OPTIONS.version;
+OPTIONS.help    = OPTIONS.h || OPTIONS.help;
+
 OPTIONS.upgrade = OPTIONS.u || OPTIONS.upgrade;
 OPTIONS.push    = OPTIONS.p || OPTIONS.push;
 OPTIONS.commit  = OPTIONS.c || OPTIONS.commit;
