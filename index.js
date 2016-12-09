@@ -7,24 +7,19 @@ var MODULE_REQUIRE
 
 var COMMAND_NAME = 'yuan-npm-release';
 
-var command;
+var command, run = false;
 if (OPTIONS.h || OPTIONS.help) {
 	require('./command/help');
 	process.exit(0);
 }
 
-if (OPTIONS.upgrade) {
-	require('./command/upgrade');
-}
+[ 'upgrade', 'commit', 'push', 'publish' ].forEach(function(step) {
+	if (OPTIONS[step]) {
+		run = true;
+		require('./command/' + step);
+	}
+});
 
-if (OPTIONS.commit) {
-	require('./command/commit');
-}
-
-if (OPTIONS.push) {
-	require('./command/push');
-}
-
-if (OPTIONS.publish) {
-	require('./command/publish');
+if (!run) {
+	require('./command/help');
 }

@@ -1,11 +1,16 @@
 var MODULE_REQUIRE
+	/* built-in */
 	, fs = require('fs')
 	, path = require('path')
+
+	/* NPM */
 	, minimist = require('minimist')
 	, semver = require('semver')
-	;
+	, ajv = new require('ajv')()
 
-var logger = require('./logger');
+	/* in-package */
+	, logger = require('./logger')
+	;
 
 var OPTIONS = minimist(process.argv.slice(2));
 
@@ -18,8 +23,25 @@ if (!fs.existsSync(OPTIONS.path)) {
 	process.exit(40);
 }
 
-if (fs.existsSync(path.join(OPTIONS.path, 'yupp.json'))) {
-	OPTIONS.config = require(path.join(OPTIONS.path, 'yupp.json'));
+var yuppPathname = path.join(OPTIONS.path, 'yupp.json');
+if (fs.existsSync(yuppPathname)) {
+	var json = {};
+	try {
+		json = JSON.parse(fs.readFileSync(yuppPathname));
+	} catch(ex) {
+		logger.error('*yupp.json* is not a valid JSON file.');
+		process.exit(41);
+	}
+
+	var schema = require('../yupp.schema');
+	var validate = ajv.compile(schema);
+	if (!validate(json)) {
+		logger.error('*yupp.json* does not conform to yupp.schema.');
+		process.exit(41);
+	}
+
+	OPTIONS.config = json;
+
 }
 else {
 	OPTIONS.config = {};
@@ -29,7 +51,7 @@ OPTIONS.upgrade = OPTIONS.u || OPTIONS.upgrade;
 OPTIONS.push    = OPTIONS.p || OPTIONS.push;
 OPTIONS.commit  = OPTIONS.c || OPTIONS.commit;
 OPTIONS.publish = OPTIONS.P || OPTIONS.publish;
-OPTIONS.dryrun  = OPTIONS.d || OPTIONS.dryrun;
+OPTIONS.dryrun  = OPTIONS.d || OPTIONS.dryrun || OPTIONS['dry-run'];
 
 if (OPTIONS.upgrade === true) {
 	OPTIONS.upgrade = 'patch';
