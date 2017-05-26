@@ -40,7 +40,7 @@ if (CONFIG.badges) {
 			var names = (parts[1] == '*') ? Object.keys(badging[group]) : [ parts[1] ];
 
 			if (group == 'npm') {
-				var packageName = pkgJson.name;
+				var packageName = CONFIG.name ? CONFIG.name : pkgJson.name;
 				names.forEach(function(name) {
 					badgeMarkdowns[ group + '.' + name ] = ns[name](packageName).toMarkdown();
 				});
