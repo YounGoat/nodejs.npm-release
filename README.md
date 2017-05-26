@@ -1,6 +1,10 @@
 #	yupp
 __Make NPM package upgrading easier.__
 
+[![total downloads of yupp](https://img.shields.io/npm/dt/yupp.svg)](https://www.npmjs.com/package/yupp)
+[![yupp's License](https://img.shields.io/npm/l/yupp.svg)](https://www.npmjs.com/package/yupp)
+[![latest version of yupp](https://img.shields.io/npm/v/yupp.svg)](https://www.npmjs.com/package/yupp)
+
 [![total downloads of yuan-npm-release](https://img.shields.io/npm/dt/yuan-npm-release.svg)](https://www.npmjs.com/package/yuan-npm-release)
 [![yuan-npm-release's License](https://img.shields.io/npm/l/yuan-npm-release.svg)](https://www.npmjs.com/package/yuan-npm-release)
 [![latest version of yuan-npm-release](https://img.shields.io/npm/v/yuan-npm-release.svg)](https://www.npmjs.com/package/yuan-npm-release)

@@ -1,6 +1,6 @@
 {
-	"name": "yuan-npm-release",
-	"alias": ["yupp"],
+	"name": "yupp",
+	"alias": ["yuan-npm-release"],
 	"badges": [
 		"npm.*",
 		"github.*"
