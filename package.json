@@ -1,7 +1,16 @@
 {
     "name": "yuan-npm-release",
-    "version": "0.2.3",
+    "version": "0.2.5",
     "description": "NPM package release tool",
+    "keywords": [
+        "npm",
+        "release",
+        "publish",
+        "github",
+        "commit",
+        "readme",
+        "badge"
+    ],
     "main": "index.js",
     "scripts": {
         "test": "node yupp -d"
