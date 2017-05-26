@@ -8,9 +8,9 @@ var logger = require('../util/logger');
 
 module.exports = function(cmd, cwd, forceRun) {
 	if (!forceRun && OPTIONS.dryrun) {
-		logger.info('#Command:# `' + cmd + '`');
+		logger.info('#$ #`' + cmd + '`');
 		if (cwd) {
-			logger.info('#CWD: ' + cwd + '#');
+			logger.info('#$ ' + cwd + '#');
 		}
 		return { lines: [], error: null };
 	}

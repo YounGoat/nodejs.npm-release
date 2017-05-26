@@ -1,15 +1,15 @@
 {
     "name": "yuan-npm-release",
-    "version": "0.1.1",
+    "version": "0.1.4",
     "description": "NPM package release tool",
     "main": "index.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "test": "node yupp -d"
     },
     "bin": {
-        "yuan-npm-release": "./index.js",
         "yupp": "./yupp.js",
-        "ypp": "./ypp.js"
+        "ypp": "./ypp.js",
+        "yu": "./yu.js"
     },
     "repository": {
         "type": "git",

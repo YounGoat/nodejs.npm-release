@@ -7,17 +7,21 @@ var MODULE_REQUIRE
 	, OPTIONS = require('../util/options')
 	;
 
+require('./config');
+require('./commit');
+
 // ---------------------------
 // 检查系统命令。
 var cmd, response;
 
-require('./commit');
 response = runner('git remote', OPTIONS.path, true);
-var lines = response.lines.filter(function(line) { return line != ''; });
-
+var lines = [];
+if (response.lines) {
+	lines = response.lines.filter(function(line) { return line != ''; });
+}
 if (lines.length == 0) {
 	logger.error('No remote repository found.');
-	process.exit(1);
+	if (!OPTIONS.dryrun) process.exit(1);
 }
 
 var remote;
@@ -34,7 +38,7 @@ else if (lines.length == 1) {
 else if (lines.indexOf('origin') >= 0) {
 	remote = 'origin';
 }
-else {
+else if (lines.length > 1) {
 	logger.warn('More than one remote repository found and none named _origin_, please specified one.');
 	process.exit(1);
 }
@@ -42,6 +46,6 @@ else {
 response = runner('git push origin HEAD --tags', OPTIONS.path);
 if (response.error) {
 	logger.error('Failed to push to remote repository.');
-	process.exit(1);
+	if (!OPTIONS.dryrun) process.exit(1);
 }
 logger.info('Pushed to remote repository.');

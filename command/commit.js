@@ -5,10 +5,13 @@ var MODULE_REQUIRE
 	, os = require('os')
 	, path = require('path')
 	/* in-package */
+	, ignore = require('../util/ignore')
 	, logger = require('../util/logger')
 	, runner = require('../util/runner')
 	, OPTIONS = require('../util/options')
 	;
+
+require('./config');
 
 // ---------------------------
 // 检查系统命令。
@@ -21,7 +24,7 @@ if (response.error) {
 }
 logger.info('Git client found.');
 
-response = runner('git status', OPTIONS.path);
+response = runner('git status', OPTIONS.path, true);
 if (response.error) {
 	logger.warn('Not a git repository: _' + OPTIONS.path + '_');
 	runner('git init', OPTIONS.path);
@@ -31,27 +34,9 @@ else {
 	logger.info('Git repository found.');
 }
 
-var pathname = path.join(OPTIONS.path, '.gitignore');
-var text = '', found = false;
-if (fs.existsSync(pathname)) {
-	text = fs.readFileSync(pathname, { encoding: 'utf8' });
-	var lines = text.split(/(\r|\n)+/);
-	for (var i = 0, line; i < lines.length; i++) {
-		line = lines[i].trim();
-		if (line == 'node_modules') {
-			found = true;
-			break;
-		}
-	}
-}
-if (!found) {
-	text += [ '', '# Added by yuan-npm-release, ' + new Date, 'node_modules' ].join('\n');
-	fs.writeFileSync(pathname, text);
-}
-logger.info('node_modules ignored.');
+ignore('.gitignore', 'node_modules');
 
-runner('git add .gitignore && git add .', OPTIONS.path);
-runner('git commit -m "Auto committed by yuan-npm-release"', OPTIONS.path);
+runner('git add . && git commit -m "Auto committed by YUPP"', OPTIONS.path);
 logger.info('Committed to local repository.');
 
 var pathname = path.join(OPTIONS.path, 'package.json');

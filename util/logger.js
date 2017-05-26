@@ -29,23 +29,30 @@ var _replace_tags = function(text, delimeter, processor) {
 }
 
 _ME.markup = function(text) {
-	text = _replace_tags(text, '*', colors.bold);
-	text = _replace_tags(text, '_', colors.italic);
-	text = _replace_tags(text, '`', colors.italic.green);
+	text = _replace_tags(text, '*', _ME.strong);
+	text = _replace_tags(text, '_', _ME.em);
+	text = _replace_tags(text, '`', _ME.code);
 	text = _replace_tags(text, '#', colors.dim);
 	return text;
 };
 
-_ME.error = function(text) {
-	console.log(colors.red('[x] ' + _ME.markup(text)));
+_ME.error = function(text, nomark) {
+	text = nomark ? text : _ME.markup(text);
+	console.log(colors.red('[x] ' + text));
 };
 
-_ME.warn = function(text) {
-	console.log(colors.yellow('[!] ' + _ME.markup(text)));
+_ME.warn = function(text, nomark) {
+	text = nomark ? text : _ME.markup(text);
+	console.log(colors.yellow('[!] ' + text));
 }
 
-_ME.info = function(text) {
-	console.log('[.] ' + _ME.markup(text));
+_ME.info = function(text, nomark) {
+	text = nomark ? text : _ME.markup(text);
+	console.log('[.] ' + text);
 };
+
+_ME.strong = colors.bold;
+_ME.em = colors.italic.cyan;
+_ME.code = colors.green;
 
 module.exports = _ME;

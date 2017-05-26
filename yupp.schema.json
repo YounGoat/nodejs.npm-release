@@ -10,14 +10,11 @@
 			"type": "string"
 		},
 		"alias": {
-			"type": "string"
+			"type": ["string", "array"]
 		},
-		"alias": {
-			"type": "array",
-			"items": {
-				"type": "string"
-			},
-			"uniqueItems": true
+		"badges": {
+			"type": ["array"]
 		}
-	}
+	},
+	"additionalProperties": false
 }

@@ -11,6 +11,9 @@ var MODULE_REQUIRE
 	, OPTIONS = require('../util/options')
 	;
 
+require('./config');
+require('./readme');
+
 if (!OPTIONS.upgrade) {
 	OPTIONS.upgrade = 'patch';
 }
@@ -44,6 +47,6 @@ if (!OPTIONS.dryrun) {
 	fs.writeFileSync(pathname, JSON.stringify(pkgJson, null, 4), 'utf8');
 }
 else {
-	logger.info('#Action: # Changes on package.json saved.');
+	logger.info('#Action: # Changes on _package.json_ saved.');
 }
 logger.info('Package upgraded to *' + pkgJson.version + '*.');

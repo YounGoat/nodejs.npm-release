@@ -13,6 +13,7 @@ var MODULE_REQUIRE
 	, OPTIONS = require('../util/options')
 	;
 
+require('./config');
 
 var pathname, pkgJson, rawName;
 
@@ -36,7 +37,7 @@ var runPublish = function(name) {
 		logger.error('Failed to publish to NPM registry.');
 		process.exit(1);
 	}
-	logger.info('Published to NPM repository (with name "' + name + '").');
+	logger.info('Published to NPM as *' + name + '*.');
 };
 
 // ---------------------------
@@ -55,13 +56,15 @@ rawName = pkgJson.name;
 
 runPublish(OPTIONS.config.name ? OPTIONS.config.name : rawName);
 
-var alias = OPTIONS.config.alias;
-if (typeof alias == 'string') {
-	alias = [ alias ];
+if (OPTIONS.config.alias) {
+	var alias = OPTIONS.config.alias;
+	if (typeof alias == 'string') {
+		alias = [ alias ];
+	}
+	alias.forEach(function(alias) {
+		runPublish(alias)
+	});
 }
-alias.forEach(function(alias) {
-	runPublish(alias)
-});
 
 // ---------------------------
 // 恢复名称。

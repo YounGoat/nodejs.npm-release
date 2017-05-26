@@ -1,43 +1,39 @@
+yUPP = Upgrade + Push + Publish
 
 *NAME*
-  _yuan-npm-release_ - Change version, push to remote and publish to registry.
-  _yupp_ - Short name, means U(pgrade), P(ush) and P(ublish).
-  _ypp_ - Short name, means P(ush) and P(ublish).
+  _yupp_ - Upgrade your package and commit it to github and npm registry.
+  _ypp_ - Do commit only without changing anything.
 
 *SYNOPSIS*
-  `yuan-npm-release -h` #|# `--help`
+  `yupp -h` #|# `--help`
   Show this help info.
 
-  `yuan-npm-release -u` #|# `--upgrade` #[# `major` #|# `minor` #|# `patch` #|# prerelease-name #|# semantic-version #]#
+  `yupp -u` #|# `--upgrade` #[# `major` #|# `minor` #|# `patch` #|# prerelease-name #|# semantic-version #]#
   Upgrade the package version.
   Without parameter, `patch` will be used by default.
 
-  `yuan-npm-release -c` #|# `--commit`
-  Commit to local Git repository.
-
-  `yuan-npm-release -p` #|# `--push` #[# remote-name #]#
+  `yupp -p` #|# `--push` #[# remote-name #]#
   Push to remote Git repository.
   Before *push*, *commit* will be run. So `-cp` equals `-p`.
 
-  `yuan-npm-release -P` #|# `--publish`
+  `yupp -P` #|# `--publish`
   Publish to NPM registry.
 
-  `yupp`
-  Equals to `yuan-npm-release --upgrade --push --publish`.
+  `ypp`
+  Equals to `yupp --push --publish`.
   Options `--upgrade` and `--push` also supported if you wanna specify version and remote repository.
 
-  `ypp`
-  Equals to `yuan-npm-release --push --publish`.
-  The version in package.json will not be changed.
-
 *OTHER OPTIONS*
+  `--dry-run` #|# `--dryrun` #|# `-d`
+    Do NOT really change anything.
+
   `--path`
-    By default, *yuan-npm-release* regard the current working dir as the package's
+    By default, *yupp* regard the current working dir as the package's
     homedir. You may change the CWD by `--path` parameter.
 
-*RELEASE STEPS*
-  1. Update CHANGELOG.md #by hand#
-  2. Update package.json version field
-  3. Add and commit, and tag with version #git#
-  4. Push to remote #git#
-  5. NPM publish #npm#
+*How to use*
+  1. Ensure `npm` is ready and `npm whoami` displays your NPM account
+  2. Ensure `git` is ready and your _github_ acccount already bound
+  3. Ensure NPM package including _package.json_ and _README.md_ is ready
+  4. Edit _yupp.json_
+  5. Run `yupp`

@@ -6,7 +6,6 @@ var MODULE_REQUIRE
 	/* NPM */
 	, minimist = require('minimist')
 	, semver = require('semver')
-	, ajv = new require('ajv')()
 
 	/* in-package */
 	, logger = require('./logger')
@@ -21,31 +20,6 @@ OPTIONS.path = OPTIONS.path
 if (!fs.existsSync(OPTIONS.path)) {
 	logger.error('Package does not exists at: _' + OPTIONS.path + '_');
 	process.exit(40);
-}
-
-var yuppPathname = path.join(OPTIONS.path, 'yupp.json');
-if (fs.existsSync(yuppPathname)) {
-	var json = {};
-	try {
-		json = JSON.parse(fs.readFileSync(yuppPathname));
-	} catch(ex) {
-		logger.error('*yupp.json* is not a valid JSON file.');
-		process.exit(41);
-	}
-
-	var schema = require('../yupp.schema');
-	var validate = ajv.compile(schema);
-	if (!validate(json)) {
-		logger.error('*yupp.json* does not conform to yupp.schema.');
-		logger.info('For details see https://github.com/YounGoat/nodejs.npm-release#about-yuppjson')
-		process.exit(41);
-	}
-
-	OPTIONS.config = json;
-
-}
-else {
-	OPTIONS.config = {};
 }
 
 OPTIONS.ver     = OPTIONS.v;

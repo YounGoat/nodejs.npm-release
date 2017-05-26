@@ -15,5 +15,4 @@ if (OPTIONS.ver) {
 	process.exit(0);
 }
 
-require('./command/push');
-require('./command/publish');
+require('./command/upgrade');

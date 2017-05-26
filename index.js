@@ -17,7 +17,7 @@ if (OPTIONS.ver) {
 	process.exit(0);
 }
 
-[ 'upgrade', 'commit', 'push', 'publish' ].forEach(function(step) {
+[ 'readme', 'upgrade', 'commit', 'push', 'publish' ].forEach(function(step) {
 	if (OPTIONS[step]) {
 		run = true;
 		require('./command/' + step);
