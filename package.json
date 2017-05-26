@@ -1,29 +1,30 @@
 {
-    "name": "yuan-npm-release",
-    "version": "0.2.0",
-    "description": "NPM package release tool",
-    "main": "index.js",
-    "scripts": {
-        "test": "node yupp -d"
-    },
-    "bin": {
-        "yupp": "./yupp.js",
-        "ypp": "./ypp.js",
-        "yu": "./yu.js"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/YounGoat/nodejs.npm-release.git"
-    },
-    "author": "youngoat@163.com",
-    "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/YounGoat/nodejs.npm-release/issues"
-    },
-    "homepage": "https://github.com/YounGoat/nodejs.npm-release#readme",
-    "dependencies": {
-        "colors": "^1.1.2",
-        "minimist": "^1.2.0",
-        "semver": "^5.1.0"
-    }
+	"name": "yuan-npm-release",
+	"version": "0.2.0",
+	"description": "NPM package release tool",
+	"main": "index.js",
+	"scripts": {
+		"test": "node yupp -d"
+	},
+	"bin": {
+		"yupp": "./yupp.js",
+		"ypp": "./ypp.js",
+		"yu": "./yu.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/YounGoat/nodejs.npm-release.git"
+	},
+	"author": "youngoat@163.com",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/YounGoat/nodejs.npm-release/issues"
+	},
+	"homepage": "https://github.com/YounGoat/nodejs.npm-release#readme",
+	"dependencies": {
+		"badging": "0.0.2",
+		"colors": "^1.1.2",
+		"minimist": "^1.2.0",
+		"semver": "^5.1.0"
+	}
 }
