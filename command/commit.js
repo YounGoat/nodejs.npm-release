@@ -34,6 +34,7 @@ else {
 	logger.info('Git repository found.');
 }
 
+ignore('.gitignore', 'package-lock.json');
 ignore('.gitignore', 'node_modules');
 
 runner('git add . && git commit -m "Auto committed by YUPP"', OPTIONS.path);

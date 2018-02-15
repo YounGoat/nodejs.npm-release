@@ -14,6 +14,9 @@
 		},
 		"badges": {
 			"type": ["array"]
+		},
+		"likes": {
+			"type": ["array"]
 		}
 	},
 	"additionalProperties": false

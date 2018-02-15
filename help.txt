@@ -12,6 +12,9 @@ yUPP = Upgrade + Push + Publish
   Upgrade the package version.
   Without parameter, `patch` will be used by default.
 
+  `yupp -c` #|# `--commit`
+  Commit to local Git repository.
+
   `yupp -p` #|# `--push` #[# remote-name #]#
   Push to remote Git repository.
   Before *push*, *commit* will be run. So `-cp` equals `-p`.

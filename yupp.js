@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+
 'use strict';
 
 var MODULE_REQUIRE
@@ -7,17 +8,12 @@ var MODULE_REQUIRE
 
 var run = false;
 
-if (OPTIONS.help) {
-	require('./command/help');
+if (OPTIONS.command) {
+	require('./command/' + OPTIONS.command);
 	process.exit(0);
 }
 
-if (OPTIONS.ver) {
-	require('./command/version');
-	process.exit(0);
-}
-
-[ 'upgrade', 'push', 'publish' ].forEach(function(step) {
+[ 'init', 'upgrade', 'push', 'publish' ].forEach(function(step) {
 	if (OPTIONS[step]) {
 		run = true;
 		require('./command/' + step);

@@ -2,6 +2,10 @@
 
 Notable changes to this project will be documented in this file. This project adheres to [Semantic Versioning 2.0.0](http://semver.org/).
 
+##	[0.3.0] - Feb 15th, 2018
+
+*	"package-lock.json" is inserted into `.gitignore`.
+
 ##	[0.2.0] - 2017-05
 
 ### Added

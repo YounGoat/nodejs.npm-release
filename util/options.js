@@ -11,50 +11,88 @@ var MODULE_REQUIRE
 	, logger = require('./logger')
 	;
 
-var OPTIONS = minimist(process.argv.slice(2));
+var argv = process.argv.slice(2);
+var command = !argv[0] || argv[0].startsWith('-') ? null : argv.shift();
+var rawOptions = minimist(argv);
+var unreadOptions = Object.assign({}, rawOptions);
+var read = function(name) {
+	var value = rawOptions[name];
+	delete unreadOptions[name];
+	return value;
+};
+var checkDrain = function() {
+	var params = [];
+	for (var name in unreadOptions) {
+		if (name == '_') continue;
+		var param = (name.length > 1 ? '--' : '-') + name;
+		if (unreadOptions[name] !== true) {
+			param += ' ' + unreadOptions[name];
+	 	}
+		params.push(param);
+	}
+	params = params.concat(unreadOptions._);
+	if (params.length) {
+		logger.error('Unknown/duplicated/redundant command parameters: ' + params.join(' '));
+		process.exit(40);
+	}
+};
 
-OPTIONS.path = OPTIONS.path
-	? path.resolve(OPTIONS.path)
-	: process.cwd();
+var OPTIONS = {
+	command: command,
+	dryrun: read('d') || read('dryrun') || read('dry-run'),
+};
 
-if (!fs.existsSync(OPTIONS.path)) {
-	logger.error('Package does not exists at: _' + OPTIONS.path + '_');
-	process.exit(40);
+if (!OPTIONS.command) {
+	if (read('h') || read('help')) {
+		OPTIONS.command = 'help';
+	}
+	else if (read('v') || read('version')) {
+		OPTIONS.command = 'version';
+	}
 }
 
-OPTIONS.ver     = OPTIONS.v;
-OPTIONS.help    = OPTIONS.h || OPTIONS.help;
+if (!OPTIONS.command) {
+	OPTIONS.path = read('path')
+		? path.resolve(read('path'))
+		: process.cwd();
 
-OPTIONS.upgrade = OPTIONS.u || OPTIONS.upgrade;
-OPTIONS.push    = OPTIONS.p || OPTIONS.push;
-OPTIONS.commit  = OPTIONS.c || OPTIONS.commit;
-OPTIONS.publish = OPTIONS.P || OPTIONS.publish;
-OPTIONS.dryrun  = OPTIONS.d || OPTIONS.dryrun || OPTIONS['dry-run'];
+	if (!fs.existsSync(OPTIONS.path)) {
+		logger.error('Package does not exists at: _' + OPTIONS.path + '_');
+		process.exit(40);
+	}
 
-if (OPTIONS.upgrade === true) {
-	OPTIONS.upgrade = 'patch';
-}
-else if (typeof OPTIONS.upgrade == 'number') {
-	OPTIONS.version = OPTIONS.upgrade + '.0';
-	OPTIONS.upgrade = true;
-}
-else if (OPTIONS.upgrade) {
-	if (semver.valid(OPTIONS.upgrade)) {
-		OPTIONS.version = OPTIONS.upgrade;
+	OPTIONS.upgrade = read('u') || read('upgrade');
+	OPTIONS.push    = read('p') || read('push');
+	OPTIONS.commit  = read('c') || read('commit');
+	OPTIONS.publish = read('P') || read('publish');
+
+	if (OPTIONS.upgrade === true) {
+		OPTIONS.upgrade = 'patch';
+	}
+	else if (typeof OPTIONS.upgrade == 'number') {
+		OPTIONS.version = OPTIONS.upgrade + '.0';
 		OPTIONS.upgrade = true;
 	}
-	else {
-		var name = OPTIONS.upgrade.toLowerCase();
-		if ([ 'major', 'minor', 'patch' ].indexOf(name) < 0) {
-			OPTIONS.prereleaseName = OPTIONS.upgrade;
-			OPTIONS.upgrade = 'prerelease';
+	else if (OPTIONS.upgrade) {
+		if (semver.valid(OPTIONS.upgrade)) {
+			OPTIONS.version = OPTIONS.upgrade;
+			OPTIONS.upgrade = true;
 		}
+		else {
+			var name = OPTIONS.upgrade.toLowerCase();
+			if ([ 'major', 'minor', 'patch' ].indexOf(name) < 0) {
+				OPTIONS.prereleaseName = OPTIONS.upgrade;
+				OPTIONS.upgrade = 'prerelease';
+			}
+		}
+	}
+
+	if (typeof read('push') == 'string') {
+		OPTIONS.pushRemote = read('push');
+		OPTIONS.push = true;
 	}
 }
 
-if (typeof OPTIONS.push == 'string') {
-	OPTIONS.pushRemote = OPTIONS.push;
-	OPTIONS.push = true;
-}
+checkDrain();
 
 module.exports = OPTIONS;

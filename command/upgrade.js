@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 var MODULE_REQUIRE
 	/* built-in */
 	, fs = require('fs')

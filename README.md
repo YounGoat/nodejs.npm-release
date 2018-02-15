@@ -1,6 +1,10 @@
 #	yupp
 __Make NPM package upgrading easier.__
 
+[![coverage status of github.com/YounGoat/nodejs.npm-release](https://img.shields.io/coveralls/YounGoat/nodejs.npm-release/master.svg)](https://coveralls.io/github/YounGoat/nodejs.npm-release2?branch=master)
+[![dependencies of github.com/YounGoat/nodejs.npm-release](https://david-dm.org/YounGoat/nodejs.npm-release/status.svg)](https://david-dm.org/YounGoat/nodejs.npm-release)
+[![devDependencies of github.com/YounGoat/nodejs.npm-release](https://david-dm.org/YounGoat/nodejs.npm-release/dev-status.svg)](https://david-dm.org/YounGoat/nodejs.npm-release?type=dev)
+
 [![total downloads of yupp](https://img.shields.io/npm/dt/yupp.svg)](https://www.npmjs.com/package/yupp)
 [![yupp's License](https://img.shields.io/npm/l/yupp.svg)](https://www.npmjs.com/package/yupp)
 [![latest version of yupp](https://img.shields.io/npm/v/yupp.svg)](https://www.npmjs.com/package/yupp)

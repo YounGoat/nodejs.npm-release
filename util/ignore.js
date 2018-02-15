@@ -10,6 +10,7 @@ var MODULE_REQUIRE
 	, logger = require('./logger')
 	;
 
+// Add to .gitignore or .npmignore (depends on the name).
 module.exports = function(name, pattern) {
 	var pathname = path.join(OPTIONS.path, name);
 	var text = '', found = false;
