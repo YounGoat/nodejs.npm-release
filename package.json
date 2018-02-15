@@ -1,6 +1,6 @@
 {
     "name": "yuan-npm-release",
-    "version": "0.2.6",
+    "version": "0.2.7",
     "description": "NPM package release tool",
     "keywords": [
         "npm",

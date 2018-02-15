@@ -41,6 +41,8 @@ if (yuppName) {
 	logger.info('_' + yuppName + '_ has been read');
 
 	ignore('.npmignore', yuppName);
+	ignore('.npmignore', 'CHANGELOG.md');
+	ignore('.npmignore', 'README.*.md');
 }
 else {
 	OPTIONS.config = {};

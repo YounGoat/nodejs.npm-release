@@ -2,6 +2,11 @@
 
 Notable changes to this project will be documented in this file. This project adheres to [Semantic Versioning 2.0.0](http://semver.org/).
 
+##	[0.2.7] - Feb 15th, 2018
+
+*	"CHANGELOG.md" is inserted into `.npmignore`.
+*	"README.*.md" is inserted into `.npmignore`.
+ 
 ##	[0.2.6] - Feb 15th, 2018
 
 *	"package-lock.json" is inserted into `.gitignore`.
