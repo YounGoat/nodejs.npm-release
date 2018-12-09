@@ -1,6 +1,6 @@
 {
     "name": "yuan-npm-release",
-    "version": "0.2.7",
+    "version": "0.3.0",
     "description": "NPM package release tool",
     "keywords": [
         "npm",
@@ -31,6 +31,7 @@
     },
     "homepage": "https://github.com/YounGoat/nodejs.npm-release#readme",
     "dependencies": {
+        "ajv": "^6.6.1",
         "badging": "0.0.2",
         "colors": "^1.1.2",
         "minimist": "^1.2.0",
